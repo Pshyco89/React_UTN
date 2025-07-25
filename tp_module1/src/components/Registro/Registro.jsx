@@ -1,36 +1,36 @@
 import React from 'react';
-//import "./Registro.css"; // Assuming you have a CSS file for styles"
+import "./Registro.css";
 
 function Registro() {
     return (
-        <div style={{ maxWidth: '400px', margin: '40px auto', padding: '24px', border: '1px solid #ccc', borderRadius: '8px' }}>
-            <h2>Registro</h2>
+        <div className="registro-container">
+            <h2>Registro De Usuario</h2>
             <form>
-                <div>
+                <div className="registro-form-group">
                     <label htmlFor="nombre">Nombre</label>
-                    <input type="text" id="nombre" name="nombre" style={{ width: '100%', padding: '8px', marginTop: '4px' }} />
+                    <input type="text" id="nombre" name="nombre" className="registro-input" />
                 </div>
-                <div>
+                <div className="registro-form-group">
                     <label htmlFor="apellido">Apellido</label>
-                    <input type="text" id="apellido" name="apellido" style={{ width: '100%', padding: '8px', marginTop: '4px' }} />
+                    <input type="text" id="apellido" name="apellido" className="registro-input" />
                 </div>
-                <div>
+                <div className="registro-form-group">
                     <label htmlFor="email">Email</label>
-                    <input type="email" id="email" name="email" style={{ width: '100%', padding: '8px', marginTop: '4px' }} />
+                    <input type="email" id="email" name="email" className="registro-input" />
                 </div>
-                <div>
+                <div className="registro-form-group">
                     <label htmlFor="telefono">Telefono</label>
-                    <input type="tel" id="telefono" name="telefono" style={{ width: '100%', padding: '8px', marginTop: '4px' }} />
+                    <input type="tel" id="telefono" name="telefono" className="registro-input" />
                 </div>
-                <div>
+                <div className="registro-form-group">
                     <label htmlFor="password">Password</label>
-                    <input type="password" id="password" name="password" style={{ width: '100%', padding: '8px', marginTop: '4px' }} />
+                    <input type="password" id="password" name="password" className="registro-input" />
                 </div>
-                <div>
+                <div className="registro-form-group registro-form-group-last">
                     <label htmlFor="confirmarPassword">Confirmar Password</label>
-                    <input type="password" id="confirmarPassword" name="confirmarPassword" style={{ width: '100%', padding: '8px', marginTop: '4px' }} />
+                    <input type="password" id="confirmarPassword" name="confirmarPassword" className="registro-input" />
                 </div>
-                <button type="submit" style={{ width: '100%', padding: '10px', background: '#007bff', color: '#fff', border: 'none', borderRadius: '4px' }}>
+                <button type="submit" className="registro-btn">
                     Registrarse
                 </button>
             </form>
