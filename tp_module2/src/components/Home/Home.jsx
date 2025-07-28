@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Home.css';
-import { Link } from 'react-router-dom';
+import ProductoCard from './ProductoCard';
 
 function Home() {
     const [productos, setProductos] = useState([]);
@@ -16,14 +16,13 @@ function Home() {
             <h2>Productos</h2>
             <div className="productos-list">
                 {productos.map(producto => (
-                    <div key={producto.id} className="producto-card">
-                        <img src={producto.image} alt={producto.title} className="producto-img" />
-                        <h3 className="producto-title">{producto.title}</h3>
-                        <p className="producto-precio">${producto.price}</p>
-                        <Link to={`/producto/${producto.id}`} className="producto-detalle-btn">
-                            Ver detalle
-                        </Link>
-                    </div>
+                    <ProductoCard
+                        key={producto.id}
+                        id={producto.id}
+                        image={producto.image}
+                        title={producto.title}
+                        price={producto.price}
+                    />
                 ))}
             </div>
         </div>
