@@ -15,7 +15,7 @@ function Login() {
                     <input type="password" id="password" name="password" className="login-input" />
                 </div>
                 <button type="submit" className="login-btn">
-                    Iniciar sesión
+                    Iniciar sesi&oacute;n
                 </button>
             </form>
         </div>
@@ -23,3 +23,4 @@ function Login() {
 }
 
 export default Login;
+

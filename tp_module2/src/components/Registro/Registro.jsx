@@ -19,7 +19,7 @@ function Registro() {
                     <input type="email" id="email" name="email" className="registro-input" />
                 </div>
                 <div className="registro-form-group">
-                    <label htmlFor="telefono">Telefono</label>
+                    <label htmlFor="telefono">Tel&eacute;fono</label>
                     <input type="tel" id="telefono" name="telefono" className="registro-input" />
                 </div>
                 <div className="registro-form-group">
