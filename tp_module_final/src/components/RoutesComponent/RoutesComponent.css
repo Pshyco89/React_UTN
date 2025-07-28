@@ -1,0 +1,10 @@
+.routes-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100vw;
+    padding-top: 80px; /* Ajusta según la altura del header fijo */
+    padding-bottom: 60px; /* Ajusta según la altura del footer */
+}
