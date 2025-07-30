@@ -2,12 +2,12 @@ import Header from "../Header/Header"
 import Footer from "../Footer/Footer"
 import "./Layout.css"
 
-const Layout = (props) => {
+const Layout = ({ children }) => {
     return (
         <>
             <Header />
             <div className="content-layout">
-                {props.children}
+                {children}
             </div>
             <Footer />
         </>
