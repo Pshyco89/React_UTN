@@ -1,6 +1,40 @@
+/* Nueva sección: Banner */
+.banner {
+    width: 100%;
+    background: #007bff;
+    color: #fff;
+    text-align: center;
+    padding: 8px 0 8px 0; /* Reducido el padding superior e inferior */
+    margin-bottom: 8px;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+    .banner h1 {
+        margin: 0;
+        font-size: 2.2rem;
+        letter-spacing: 1px;
+    }
+
+    .banner h2 {
+        margin: 8px 0 0 0;
+        font-size: 1.2rem;
+        font-weight: 400;
+    }
+
+/* Nueva sección: productList */
+.productList {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 60vh;
+    margin-top: 0; /* Asegura que no haya margen arriba */
+}
+
 .home-container {
-    max-width: 900px;
-    margin: 40px auto;
+    max-width: 1200px;
+    margin: 0 auto 10px auto; /* Sin espacio arriba, mantiene margen abajo */
     padding: 24px;
     background: #fff;
 }
@@ -15,6 +49,9 @@
     gap: 24px;
     flex-wrap: wrap;
     justify-content: center;
+    max-height: 45vh; /* Ajusta según tu diseño */
+    overflow-y: auto; /* Habilita el scroll vertical */
+    padding-right: 8px; /* Espacio para la barra de scroll */
 }
 
 .producto-card {

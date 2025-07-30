@@ -4,18 +4,22 @@
     left: 0;
     width: 100%;
     display: flex;
-    gap: 16px;
+    gap: 12px; /* Menor separación entre enlaces */
     background: #f0f0f0;
-    padding: 12px 24px;
-    margin-bottom: 24px;
+    padding: 4px 16px; /* Antes: 12px 24px */
+    margin-bottom: 12px; /* Antes: 24px */
     z-index: 1000;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    height: 36px; /* Altura fija más baja */
+    align-items: center; /* Centra verticalmente los enlaces */
 }
 
     .nav-bar a {
         color: #007bff;
         text-decoration: none;
         font-weight: bold;
+        font-size: 0.95rem; /* Fuente más pequeña */
+        padding: 2px 6px; /* Menor padding en los enlaces */
     }
 
         .nav-bar a:hover {
