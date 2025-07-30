@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import './Home.css';
-import ProductoCard from './ProductoCard';
+import './Main.css';
+import ProductoCard from '../../Views/ProductoCard';
 
-function Home() {
+function Main() {
     const [productos, setProductos] = useState([]);
 
     useEffect(() => {
@@ -29,4 +29,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default Main;

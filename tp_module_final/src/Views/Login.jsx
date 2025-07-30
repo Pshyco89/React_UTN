@@ -1,9 +1,11 @@
 import React from 'react';
-import './Login.css';
+import Layout from '../components/Layout/Layout';
+import '../Styles/Login.css';
 
-function Login() {
+const Login = () => {
     return (
-        <div className="login-container">
+        <Layout>
+            <div className="login-container">
             <h2>Login</h2>
             <form>
                 <div className="login-form-group">
@@ -18,7 +20,8 @@ function Login() {
                     Iniciar sesi&oacute;n
                 </button>
             </form>
-        </div>
+            </div>
+        </Layout>
     );
 }
 
