@@ -4,6 +4,7 @@ import "../Styles/Registro.css";
 import { collection, setDoc, doc, getDoc, updateDoc, increment } from "firebase/firestore";
 import { db } from '../Config/firebaseConfig';
 import { useAuth } from '../context/AuthContext';
+import { userId, adminId, adminDescription } from '../Constants/userTypes';
 
 const Registro = () => {
     const [form, setForm] = useState({
@@ -18,6 +19,10 @@ const Registro = () => {
     const [mensaje, setMensaje] = useState('');
     const [error, setError] = useState('');
     const { register } = useAuth();
+
+    // Nuevo: obtener el tipo de login desde la query string
+    const params = new URLSearchParams(location.search);
+    const tipo = params.get('tipo'); // 'admin' o 'usuario'
 
     const handleChange = (e) => {
         setForm({
@@ -69,7 +74,7 @@ const Registro = () => {
                     lastname: form.apellido
                 },
                 phone: form.telefono,
-                typeuserid: 1,
+                typeuserid: tipo === adminDescription ? adminId : userId,
             };
             await setDoc(doc(db, "users", docId), userData);
             setMensaje(`Usuario registrado correctamente. ID: ${docId}`);

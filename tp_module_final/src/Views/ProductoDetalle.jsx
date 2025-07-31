@@ -33,7 +33,6 @@ const ProductoDetalle = () => {
                 } else {
                     setProducto(null);
                 }
-                // console.log("Producto obtenido:", docSnap.data());
             } catch (error) {
                 console.error("Error al obtener el producto:", error);
                 setProducto(null);
@@ -98,7 +97,6 @@ const ProductoDetalle = () => {
                         { productId: Number(producto.id), quantity: cantidad, unitPrice: Number(producto.price) }
                     ];
                 }
-                // Calcular total usando unitPrice de cada item
                 total = newItems.reduce((acc, item) => acc + (item.unitPrice * item.quantity), 0);
                 await updateDoc(cartDocRef, {
                     items: newItems,
@@ -112,7 +110,6 @@ const ProductoDetalle = () => {
                 newItems = [
                     { productId: Number(producto.id), quantity: cantidad, unitPrice: Number(producto.price) }
                 ];
-                // Calcular total usando unitPrice de cada item (solo uno en este caso)
                 total = newItems.reduce((acc, item) => acc + (item.unitPrice * item.quantity), 0);
                 await setDoc(cartDocRef, {
                     id: nextId,

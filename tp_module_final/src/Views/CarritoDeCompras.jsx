@@ -70,7 +70,7 @@ const CarritoDeCompras = () => {
       <div className="carrito-container">
         <h2>Carrito de Compras</h2>
         {cart.items.length === 0 ? (
-          <div className="carrito-vacio">El carrito está vacío.</div>
+            <div className="carrito-vacio">El carrito est&aacute; vac&iacute;o.</div>
         ) : (
           <table className="carrito-tabla">
             <thead>

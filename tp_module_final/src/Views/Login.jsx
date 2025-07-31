@@ -5,6 +5,7 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from '../Config/firebaseConfig';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { userId, adminId, adminDescription, userDescription } from '../Constants/userTypes';
 
 const Login = () => {
     const [form, setForm] = useState({ username: '', password: '' });
@@ -13,6 +14,10 @@ const Login = () => {
     const { login } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
+
+    // Nuevo: obtener el tipo de login desde la query string
+    const params = new URLSearchParams(location.search);
+    const tipo = params.get('tipo'); // 'admin' o 'usuario'
 
     const handleChange = (e) => {
         setForm({
@@ -33,13 +38,33 @@ const Login = () => {
         }
 
         try {
-            // Buscar usuario por username
+            // Buscar usuario por username, password y tipo de usuario
             const usersRef = collection(db, "users");
-            const q = query(usersRef, where("username", "==", form.username));
+            let userTypeToFind = null;
+            if (tipo === adminDescription) userTypeToFind = adminId;
+            if (tipo === userDescription) userTypeToFind = userId;
+
+            let q;
+            if (userTypeToFind) {
+                q = query(
+                    usersRef,
+                    where("username", "==", form.username),
+                    where("password", "==", form.password),
+                    where("typeuserid", "==", userTypeToFind)
+                );
+            } else {
+                // fallback: solo username y password
+                q = query(
+                    usersRef,
+                    where("username", "==", form.username),
+                    where("password", "==", form.password)
+                );
+            }
+
             const querySnapshot = await getDocs(q);
 
             if (querySnapshot.empty) {
-                setError('Usuario no encontrado.');
+                setError('Usuario no encontrado o tipo incorrecto.');
                 setLoading(false);
                 return;
             }
@@ -49,14 +74,17 @@ const Login = () => {
                 userData = doc.data();
             });
 
-            if (userData && userData.password === form.password) {
+            if (userData) {
                 login(userData);
                 setError('');
                 // Obtiene el parámetro returnTo de la query string
-                const params = new URLSearchParams(location.search);
                 const returnTo = params.get('returnTo');
                 if (returnTo) {
                     navigate(returnTo);
+                } else if (tipo === adminDescription) {
+                    navigate('/admin'); // Redirige a Dashboard.jsx
+                } else if (tipo === userDescription) {
+                    navigate('/'); // Redirige a Home.jsx
                 } else {
                     navigate('/');
                 }

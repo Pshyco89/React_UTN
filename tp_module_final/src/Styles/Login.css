@@ -44,3 +44,7 @@ body, .login-container {
     .login-btn:hover {
         background: #0056b3;
     }
+
+.login-error {
+    color: #000;
+}

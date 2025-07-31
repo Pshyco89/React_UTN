@@ -4,24 +4,85 @@
     left: 0;
     width: 100%;
     display: flex;
-    gap: 12px; /* Menor separación entre enlaces */
-    background: #f0f0f0;
-    padding: 4px 16px; /* Antes: 12px 24px */
-    margin-bottom: 12px; /* Antes: 24px */
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    min-height: 60px;
+    padding: 0 24px;
     z-index: 1000;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    height: 36px; /* Altura fija más baja */
-    align-items: center; /* Centra verticalmente los enlaces */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
 
-    .nav-bar a {
-        color: #007bff;
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 0.95rem; /* Fuente más pequeña */
-        padding: 2px 6px; /* Menor padding en los enlaces */
-    }
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
 
-        .nav-bar a:hover {
-            text-decoration: underline;
-        }
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* reducido de 12px a 8px para acercar los botones */
+    margin-right: 40px; /* agrega margen derecho para empujar los botones a la izquierda */
+}
+
+.nav-bar a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.nav-bar a:hover {
+    color: #007bff;
+}
+
+.nav-bar button {
+    background: #f44336;
+    color: #fff;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.nav-bar button:hover {
+    background: #d32f2f;
+}
+
+.nav-bar span {
+    font-size: 1rem;
+    color: #444;
+}
+
+.header-cart-icon {
+    position: relative;
+    display: inline-block;
+    margin: 0 16px;
+    cursor: pointer;
+    vertical-align: middle;
+    color: #222;
+    transition: color 0.2s;
+}
+
+.header-cart-icon:hover {
+    color: #007bff;
+}
+
+.header-cart-badge {
+    position: absolute;
+    top: -7px;
+    right: -10px;
+    background: #e53935;
+    color: #fff;
+    border-radius: 50%;
+    padding: 2px 7px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    min-width: 22px;
+    text-align: center;
+    box-shadow: 0 1px 4px rgba(229,57,53,0.15);
+    pointer-events: none;
+}
