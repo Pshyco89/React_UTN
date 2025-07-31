@@ -22,6 +22,7 @@
 
 .dashboard-actions {
     display: flex;
+    flex-wrap: wrap; /* Permite que los botones se ajusten si hay muchos */
     justify-content: center;
     gap: 20px;
 }

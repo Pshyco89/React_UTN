@@ -3,56 +3,177 @@
     margin: 40px auto;
     padding: 24px;
     background: #fff;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    border-radius: 12px;
+    /* Añadido para centrar contenido cuando no hay producto */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 220px;
+    text-align: center;
 }
+
+/* Estilo especial para mensajes de error o vacío */
+    .detalle-container:only-child {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #22223b;
+        background: #fff4f4;
+        border: 1px solid #ffd6d6;
+        border-radius: 10px;
+        padding: 32px;
+        box-shadow: 0 1px 6px rgba(176,0,32,0.04);
+        margin-bottom: 18px;
+        letter-spacing: 0.5px;
+    }
 
 .detalle-card {
     display: flex;
+    flex-wrap: wrap;
     gap: 32px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 24px;
-    background: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 32px 24px;
+    background: #f6f8fa;
     align-items: center;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.04);
 }
 
 .detalle-img {
-    width: 180px;
-    height: 180px;
+    width: 220px;
+    height: 220px;
     object-fit: contain;
-    border-radius: 8px;
+    border-radius: 10px;
     background: #fff;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.03);
 }
 
 .detalle-info {
     flex: 1;
+    min-width: 220px;
 }
 
 .detalle-title {
-    color: #000;
-    margin-bottom: 16px;
+    color: #22223b;
+    margin-bottom: 18px;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
 }
 
 .detalle-descripcion {
-    color: #333;
-    margin-bottom: 16px;
+    color: #4a4e69;
+    margin-bottom: 18px;
+    font-size: 1.1rem;
+    line-height: 1.5;
 }
 
 .detalle-precio {
     font-weight: bold;
     color: #007bff;
-    margin-bottom: 24px;
+    margin-bottom: 18px;
+    font-size: 1.2rem;
+}
+
+.detalle-cantidad {
+    color: #22223b;
+    margin-bottom: 18px;
+    font-size: 1rem;
+}
+
+.detalle-cantidad-input {
+    margin: 10px 0 18px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1rem;
+}
+
+    .detalle-cantidad-input input[type="number"] {
+        padding: 4px 8px;
+        border: 1px solid #bdbdbd;
+        border-radius: 4px;
+        font-size: 1rem;
+        width: 60px;
+        background: #f9f9f9;
+        transition: border 0.2s;
+        color: #222;
+    }
+
+        .detalle-cantidad-input input[type="number"]:focus {
+            border: 1.5px solid #007bff;
+            outline: none;
+            background: #fff;
+        }
+
+.detalle-mensaje {
+    margin: 10px 0 16px 0;
+    color: #b00;
+    background: #fff4f4;
+    border: 1px solid #ffd6d6;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: left;
+    max-width: 350px;
 }
 
 .detalle-comprar-btn {
-    padding: 10px 20px;
-    background: #28a745;
+    padding: 12px 28px;
+    background: linear-gradient(90deg, #28a745 60%, #218838 100%);
     color: #fff;
     border: none;
-    border-radius: 4px;
-    font-size: 1rem;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: 600;
     cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    box-shadow: 0 2px 8px rgba(40,167,69,0.08);
 }
 
-    .detalle-comprar-btn:hover {
-        background: #218838;
+.detalle-comprar-btn:hover {
+    background: linear-gradient(90deg, #218838 60%, #28a745 100%);
+    transform: translateY(-2px) scale(1.03);
+}
+
+.detalle-nav-btns {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    justify-content: flex-start;
+}
+
+.detalle-nav-btn {
+    padding: 10px 22px;
+    background: linear-gradient(90deg, #007bff 60%, #0056b3 100%);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    box-shadow: 0 1px 6px rgba(0,123,255,0.08);
+}
+
+.detalle-nav-btn:hover {
+    background: linear-gradient(90deg, #0056b3 60%, #007bff 100%);
+    transform: translateY(-1px) scale(1.03);
+}
+
+@media (max-width: 600px) {
+    .detalle-card {
+        flex-direction: column;
+        padding: 18px 8px;
+        gap: 18px;
     }
+    .detalle-img {
+        width: 100%;
+        height: 180px;
+    }
+    .detalle-info {
+        min-width: unset;
+    }
+}
