@@ -5,10 +5,12 @@ import Login from '../../Views/Login';
 import Registro from '../../Views/Registro';
 import ProductoDetalle from '../../Views/ProductoDetalle';
 import Dashboard from '../../Views/Dashboard';
-import EditProduct from '../../Views/EditProduct';
+//import EditProduct from '../../Views/Pro';
 import NotFound from '../../Views/NotFound';
 import CarritoDeCompras from '../../Views/CarritoDeCompras';
+import ProductTable from '../../Views/ProductoTabla';
 import './RoutesComponent.css';
+import ProductoForm from '../../Views/ProductoForm';
 
 const RoutesComponent = () => {
     return (
@@ -19,7 +21,12 @@ const RoutesComponent = () => {
                     <Route path="/admin" element={<Dashboard />} />
                     <Route path="/registro" element={<Registro />} />
                     <Route path="/login" element={<Login />} />
-                    <Route path="/editar-producto/:id" element={<EditProduct />} />
+
+                    {/*<Route path="/editar-producto/:id" element={<EditProduct />} />*/}
+                    {/*<Route path="/edit-product" element={<EditProduct />} />*/}
+                    <Route path="/productTable" element={<ProductTable />} />
+                    <Route path="/add-product" element={<ProductoForm />} />
+
                     <Route path="/producto/:id" element={<ProductoDetalle />} />
                     <Route path="/carrito" element={<CarritoDeCompras />} />
                     <Route path="*" element={<NotFound />} />

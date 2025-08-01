@@ -82,7 +82,7 @@ const Login = () => {
                 if (returnTo) {
                     navigate(returnTo);
                 } else if (tipo === adminDescription) {
-                    navigate('/admin'); // Redirige a Dashboard.jsx
+                    navigate('/admin?tipo=' + adminDescription); // Redirige a Dashboard.jsx
                 } else if (tipo === userDescription) {
                     navigate('/'); // Redirige a Home.jsx
                 } else {

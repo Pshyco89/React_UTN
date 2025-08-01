@@ -28,6 +28,7 @@ const Header = () => {
             const q = query(
                 cartsRef,
                 where("userId", "==", user.id),
+                where("lastSaleId", "==", 0),
                 orderBy("id", "desc"),
                 limit(1)
             );
@@ -88,6 +89,10 @@ const Header = () => {
         navigate('/login?tipo=' + adminDescription);
     }
 
+    const handleUserPanel = () => {
+        navigate('/admin?tipo=' + userDescription);
+    }
+
     return (
         <nav className="nav-bar">
             <div className="nav-left">
@@ -100,18 +105,17 @@ const Header = () => {
                 {user ? (
                     <>
                         <span>
-                            Bienvenido, {user.username}
-                            {userType && ` (${userType})`}
+                            Bienvenido, {user.name.firstname} {userType && `(${user.username} / ${userType})`}
                         </span>
                         {/* Carrito de compras solo para Usuario */}
                         {userType === userDescription && (
                             <div className="header-cart-icon" onClick={() => navigate('/carrito')} title="Ir al carrito">
-                                <FaShoppingCart size={22} />
+                                <FaShoppingCart size={40} />
                                 <span className="header-cart-badge">{cartCount}</span>
                             </div>
                         )}
                         {userType === userDescription && (
-                            <button onClick={() => navigate('/admin')}>Panel de Usuario</button>
+                            <button onClick={handleUserPanel}>Panel de Usuario</button>
                         )}
                         <button onClick={handleLogout}>Cerrar sesi&oacute;n</button>
                     </>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Layout from '../components/Layout/Layout';
 import '../Styles/ProductoDetalle.css';
 import { useParams, useNavigate } from 'react-router-dom';
-import { doc, getDoc, setDoc, updateDoc, collection, query, where, getDocs, addDoc, increment } from "firebase/firestore";
+import { doc, getDoc, setDoc, updateDoc, collection, getDocs, increment } from "firebase/firestore";
 import { db } from '../Config/firebaseConfig';
 import { useAuth } from '../context/AuthContext';
 
@@ -15,6 +15,9 @@ const ProductoDetalle = () => {
     const { user } = useAuth();
     const navigate = useNavigate();
 
+    // Asegura que el id sea string
+    const productoId = String(id);
+
     const getNextId = async () => {
         const counterRef = doc(db, "counters", "carts");
         await updateDoc(counterRef, { current: increment(1) });
@@ -26,12 +29,27 @@ const ProductoDetalle = () => {
         const fetchProducto = async () => {
             setLoading(true);
             try {
-                const docRef = doc(db, "products", id);
+                // Busca el producto por id exacto (string)
+                const docRef = doc(db, "products", productoId);
                 const docSnap = await getDoc(docRef);
                 if (docSnap.exists()) {
                     setProducto({ id: docSnap.id, ...docSnap.data() });
                 } else {
-                    setProducto(null);
+                    // Si no existe, intenta buscar por id numérico (por si los ids en Firestore son números)
+                    const productsCol = collection(db, "products");
+                    const productsSnapshot = await getDocs(productsCol);
+                    let found = null;
+                    productsSnapshot.forEach(docu => {
+                        if (
+                            String(docu.id) === productoId ||
+                            String(docu.data().id) === productoId ||
+                            Number(docu.id) === Number(productoId) ||
+                            Number(docu.data().id) === Number(productoId)
+                        ) {
+                            found = { id: docu.id, ...docu.data() };
+                        }
+                    });
+                    setProducto(found);
                 }
             } catch (error) {
                 console.error("Error al obtener el producto:", error);
@@ -40,7 +58,7 @@ const ProductoDetalle = () => {
             setLoading(false);
         };
         fetchProducto();
-    }, [id]);
+    }, [productoId]);
 
     const handleCantidadChange = (e) => {
         const value = Math.max(1, Math.min(Number(e.target.value), producto?.rating?.count || 1));
@@ -51,7 +69,7 @@ const ProductoDetalle = () => {
         if (!user) {
             setMensaje('Debes iniciar sesión para agregar al carrito.');
             setTimeout(() => {
-                navigate(`/login?returnTo=/producto/${id}`);
+                navigate(`/login?returnTo=/producto/${productoId}`);
             }, 1500);
             return;
         }
@@ -84,17 +102,17 @@ const ProductoDetalle = () => {
                 cartDocSnap = await getDoc(cartDocRef);
 
                 const cartData = cartDocSnap.data();
-                const existingItem = cartData.items.find(item => item.productId === Number(producto.id));
+                const existingItem = cartData.items.find(item => String(item.productId) === String(producto.id));
                 if (existingItem) {
                     newItems = cartData.items.map(item =>
-                        item.productId === Number(producto.id)
+                        String(item.productId) === String(producto.id)
                             ? { ...item, quantity: Math.min(item.quantity + cantidad, producto.rating.count), unitPrice: Number(producto.price) }
                             : item
                     );
                 } else {
                     newItems = [
                         ...cartData.items,
-                        { productId: Number(producto.id), quantity: cantidad, unitPrice: Number(producto.price) }
+                        { productId: producto.id, quantity: cantidad, unitPrice: Number(producto.price) }
                     ];
                 }
                 total = newItems.reduce((acc, item) => acc + (item.unitPrice * item.quantity), 0);
@@ -108,7 +126,7 @@ const ProductoDetalle = () => {
                 cartDocRef = doc(db, "carts", cartDocId);
 
                 newItems = [
-                    { productId: Number(producto.id), quantity: cantidad, unitPrice: Number(producto.price) }
+                    { productId: producto.id, quantity: cantidad, unitPrice: Number(producto.price) }
                 ];
                 total = newItems.reduce((acc, item) => acc + (item.unitPrice * item.quantity), 0);
                 await setDoc(cartDocRef, {
@@ -116,7 +134,7 @@ const ProductoDetalle = () => {
                     userId: user.id,
                     items: newItems,
                     total,
-                    lastSaleId: null
+                    lastSaleId: 0
                 });
             }
             setMensaje('Producto agregado al carrito.');
@@ -147,7 +165,7 @@ const ProductoDetalle = () => {
                         <h2 className="detalle-title">{producto.title}</h2>
                         <p className="detalle-descripcion">{producto.description}</p>
                         <p className="detalle-precio">Precio: ${producto.price}</p>
-                        {producto.rating.count !== undefined && (
+                        {producto.rating && producto.rating.count !== undefined && (
                             <>
                                 <p className="detalle-cantidad">Cantidad disponible: {producto.rating.count}</p>
                                 <div className="detalle-cantidad-input">
@@ -165,7 +183,6 @@ const ProductoDetalle = () => {
                             </>
                         )}
                         {mensaje && <div className="detalle-mensaje">{mensaje}</div>}
-                        {/* Botones de acción alineados */}
                         <div style={{ display: 'flex', gap: 12, marginTop: 16 }}>
                             <button
                                 className="detalle-comprar-btn"
