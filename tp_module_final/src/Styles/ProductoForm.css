@@ -1,0 +1,138 @@
+.back-btn {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    background: #222e3c;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+    .back-btn:hover {
+        background: #1a2230;
+    }
+
+.producto-form {
+    position: relative; /* Necesario para el botón absoluto */
+    max-width: 680px; /*Más ancho */
+    min-height: calc(80vh - 100px); /* Ajusta según la altura real de header+footer */
+    margin: 32px auto;
+    padding: 10px 100px; /* Menos alto, más ancho */
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(34,46,60,0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+    .producto-form h2 {
+        margin-bottom: 8px;
+        color: #222e3c;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+    .form-row label {
+        font-weight: 500;
+        color: #222e3c;
+        margin-bottom: 2px;
+    }
+
+    .form-row input,
+    .form-row textarea,
+    .form-row select {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 1rem;
+        background: #f7f9fa;
+        color: #222e3c;
+    }
+
+    .form-row textarea {
+        resize: vertical;
+        min-height: 60px;
+    }
+
+/* Letras oscuras específicas para precio, count y rate */
+input[name="price"],
+input[name="count"],
+input[name="rate"] {
+    color: #222e3c !important;
+    background: #f7f9fa !important;
+}
+
+.form-row-double {
+    display: flex;
+    gap: 24px;
+}
+
+    .form-row-double .form-row {
+        flex: 1;
+    }
+
+.rating-fieldset {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 12px;
+    margin-top: 8px;
+    background: #f7f9fa;
+}
+
+    .rating-fieldset legend {
+        color: #222e3c;
+        font-weight: 500;
+        font-size: 1rem;
+    }
+
+    .rating-fieldset > div {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 8px;
+    }
+
+.form-btn-group {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 8px;
+}
+
+.form-btn,
+.form-btn-clear {
+    background: #222e3c;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 0;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    min-width: 160px;
+    transition: background 0.2s, color 0.2s, border 0.2s;
+}
+
+    .form-btn:hover,
+    .form-btn-clear:hover {
+        background: #1a2230;
+        color: #fff;
+    }
+
+.form-select,
+.form-select option {
+    color: #222e3c; /* Letras oscuras */
+    background: #f7f9fa; /* Fondo claro */
+}
