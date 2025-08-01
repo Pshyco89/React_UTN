@@ -1,0 +1,18 @@
+{
+  "__collections__": {
+    "users": {
+      "user_1": {
+        "id": 1,
+        "email": "john@gmail.com",
+        "username": "johnd",
+        "password": "m38rmF$",
+        "name": {
+          "firstname": "john",
+          "lastname": "doe"
+        },
+        "phone": "1-570-236-7033",
+        "typeuserid": 1
+      }
+    }
+  }
+  }

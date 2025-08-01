@@ -1,0 +1,14 @@
+{
+  "__collections__": {
+    "typeUsers": {
+      "typeUser_1": {
+        "id": 1,
+        "userType": "Usuario"
+      },
+      "typeUser_2": {
+        "id": 2,
+        "userType": "Administrador"
+      }
+    }
+  }
+}

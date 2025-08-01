@@ -1,0 +1,22 @@
+{
+  "__collections__": {
+    "categories": {
+      "category_1": {
+        "id": 1,
+        "categoryName" : "men's clothing"
+      },
+      "category_2": {
+        "id": 2,
+        "categoryName" : "women's clothing"
+      },
+      "category_3": {
+        "id" : 3,
+        "categoryName" : "jewelery"
+      },
+      "category_4": {
+        "id": 4,
+        "categoryName" : "electronics"
+      }
+    }
+  }
+ }

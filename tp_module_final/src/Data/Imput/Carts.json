@@ -1,0 +1,22 @@
+{
+  "__collections__": {
+    "carts": {
+      "cart_1": {
+        "id": 1,
+        "userId": 1,
+        "items": [
+          {
+            "productId": 2,
+            "quantity": 1
+          },
+          {
+            "productId": 5,
+            "quantity": 2
+          }
+        ],
+        "total": 712.3,
+        "lastSaleId": 1
+      }
+    }
+  }
+}
