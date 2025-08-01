@@ -11,6 +11,7 @@ import CarritoDeCompras from '../../Views/CarritoDeCompras';
 import ProductTable from '../../Views/ProductoTabla';
 import './RoutesComponent.css';
 import ProductoForm from '../../Views/ProductoForm';
+import MetricsUsuario from '../../Views/MetricsUsuario';
 
 const RoutesComponent = () => {
     return (
@@ -22,8 +23,7 @@ const RoutesComponent = () => {
                     <Route path="/registro" element={<Registro />} />
                     <Route path="/login" element={<Login />} />
 
-                    {/*<Route path="/editar-producto/:id" element={<EditProduct />} />*/}
-                    {/*<Route path="/edit-product" element={<EditProduct />} />*/}
+                    <Route path="/user-metrics" element={<MetricsUsuario />} />
                     <Route path="/productTable" element={<ProductTable />} />
                     <Route path="/add-product" element={<ProductoForm />} />
 

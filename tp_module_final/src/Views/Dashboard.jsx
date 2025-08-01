@@ -29,7 +29,10 @@ const Dashboard = () => {
     const handleAdminUser = () => {
         navigate(`/registro?tipo=${adminEditorDescription}`);
     };
-    
+
+    const handleMetricsUser = () => {
+        navigate('/user-metrics');
+    }
 
     return (
         <Layout>
@@ -49,13 +52,11 @@ const Dashboard = () => {
                         <>
                             <button className="dashboard-btn" onClick={handleAddProduct}>Agregar producto</button>
                             <button className="dashboard-btn" onClick={handleEditProduct}>Editar Producto</button>
-                            {/*<button className="dashboard-btn">Ver usuarios</button>
-                            <button className="dashboard-btn">Métricas</button>*/}
                             <button className="dashboard-btn" onClick={handleAdminUser}>Editar Perfil Administrador</button>
                         </>
                     ) : (
                         <>
-                            <button className="dashboard-btn">Ver mis compras</button>
+                            <button className="dashboard-btn" onClick={handleMetricsUser}>Metricas</button>
                             <button className="dashboard-btn" onClick={handleEditUser}>Editar Perfil Usuario</button>
                         </>
                     )}
